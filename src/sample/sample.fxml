@@ -84,12 +84,12 @@
                         <Image url="@../resource/O.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="img12" fitHeight="100.0" fitWidth="105.0" onMouseClicked="#img11Click" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <ImageView fx:id="img12" fitHeight="100.0" fitWidth="105.0" onMouseClicked="#img12Click" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <image>
                         <Image url="@../resource/O.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="img11" fitHeight="100.0" fitWidth="105.0" onMouseClicked="#img12Click" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <ImageView fx:id="img11" fitHeight="100.0" fitWidth="105.0" onMouseClicked="#img11Click" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <image>
                         <Image url="@../resource/O.png" />
                      </image>
