@@ -1,5 +1,6 @@
 package sample;
 
+
 import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,6 +22,8 @@ import java.util.Random;
 public class Controller {
     public Pane pnlGame;
 
+    public Button btnWinNewGame;
+    public Button btnExit;
     public Button btnNewGame;
     public Button btnExitGame;
     public ImageView img1;
@@ -132,6 +135,7 @@ public class Controller {
                 }
                 if (isGameWin()) {
                     state=State.END;
+                    Win();
                     System.out.println("You win!");
                 }
             }
@@ -148,10 +152,30 @@ public class Controller {
             for (int j = 0; j<4; j++)
                 if (field[i][j]==true)
                     count++;
-        if (count==16 || count==0)
+        if (count==16 || count==0) {
             return true;
+        }
         else
             return false;
+    }
+
+    private void WinNewGame() throws IOException {
+        Exit();
+        NewGame();
+    }
+
+    private void Win() {
+        try {
+            state = State.END;
+            Stage nextStage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("WinWindow.fxml"));
+            nextStage.setTitle("GameOX");
+            nextStage.setScene(new Scene(root, 400, 180));
+            nextStage.show();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void NewGame(){
@@ -162,6 +186,8 @@ public class Controller {
                     field[i][j]=false;
                 }
             generateField();
+            if (state == State.END)
+                Exit();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -173,7 +199,7 @@ public class Controller {
         try {
             state = State.GENERATE;
             Random random = new Random();
-            for (i = 0; i < 99; i++){
+            for (i = 0; i < 69; i++){
                 toggle(random.nextInt(16)+1);
             }
         }
@@ -235,6 +261,32 @@ public class Controller {
             System.out.println(e.getMessage());
         }
 
+    }
+
+
+    public void Exit() throws IOException {
+        //zatvoorit formular
+        try {
+            Stage stage = (Stage) btnExit.getScene().getWindow();
+            Stage nextStage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("WinWindow.fxml"));
+            stage.close();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+
+
+    public void CloseGame() throws IOException {
+        try{
+            Exit();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private class java {
